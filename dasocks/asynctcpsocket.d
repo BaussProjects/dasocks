@@ -105,6 +105,34 @@ public:
 	}
 	
 	/**
+	*	Creates a sync receive.
+	*/
+	ubyte[] waitReceive(size_t size) {
+		auto oldRecv = m_receiveInvoke;
+		m_receiveInvoke = null;
+		beginReceive(size);
+		
+		ubyte[] buf;
+		size_t rounds = 0;
+		while (!buf && rounds < (10 * 1000)) {
+			import dasocks.thread;
+			sleep(1);
+			rounds++;
+			synchronized {
+				if (m_listening)
+					continue;
+				if (!m_receiveState)
+					continue;
+				if (!m_receiveState.ready)
+					continue;
+			}
+			buf = endReceive();
+			m_receiveInvoke = oldRecv;
+		}
+		return buf;
+	}
+	
+	/**
 	*	Begins the acceptance of a socket.
 	*/
 	void beginAccept() {
