@@ -25,3 +25,5 @@ Easy to understand, easy to use and easy to customize
 
 Official website:
 http://baussprojects.comlu.com/projects.php#dasocks
+
+Please view the wiki for more information.
