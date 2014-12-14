@@ -17,11 +17,7 @@ std.conv
 std.string
 dasocks has the following features
 
-Simplified asynchronous socket usage
-Thread management
-Network packet management with a string-packer
-Safe usage, easy debuggable and based solely on reporting errors through exceptions
-Easy to understand, easy to use and easy to customize
+Simplified asynchronous socket usage, cross-platform, thread management, network packet management with a string-packer, safe usage, easy debuggable and based solely on reporting errors through exceptions, easy to understand, easy to use and easy to customize
 
 Official website:
 http://baussprojects.comlu.com/projects.php#dasocks
