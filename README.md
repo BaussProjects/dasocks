@@ -9,12 +9,9 @@ dasocks only requires a D compiler that is compatible with its code, but will al
 
 dasocks is written completely in D using the following modules from the standard library:
 
-core.thread
-std.socket
-std.c.string (Standard C Library)
-std.array
-std.conv
-std.string
+core.thread, std.socket, std.c.string (Standard C Library), std.array, std.conv, std.string
+
+
 dasocks has the following features
 
 Simplified asynchronous socket usage, cross-platform, thread management, network packet management with a string-packer, safe usage, easy debuggable and based solely on reporting errors through exceptions, easy to understand, easy to use and easy to customize
