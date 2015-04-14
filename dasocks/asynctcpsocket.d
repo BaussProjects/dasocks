@@ -67,6 +67,14 @@ public:
 	}
 	
 	/**
+	*	Enables TCP keep-alive with the specified parameters.
+	*/
+	void setKeepAlive(int time, int interval)
+	{
+		m_socket.setKeepAlive(time, interval);
+	}
+	
+	/**
 	*	Sets the events of the socket.
 	*/
 	void setEvents(AsyncSocketEvent onAccept, AsyncSocketEvent onReceive, AsyncSocketEvent onDisconnect) {
