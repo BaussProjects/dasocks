@@ -73,7 +73,7 @@ public:
 	*/
     void setOption(T)(SocketOptionLevel level, SocketOption option, T value)
     {
-		setOption(level, option, value);
+		m_socket.setOption(level, option, value);
 	}
     
 	/**
