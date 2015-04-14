@@ -67,9 +67,17 @@ public:
 	}
 	
 	/**
+	*	Set a socket option.
+	*/
+    void setOption(T)(SocketOptionLevel level, SocketOption option, T value) @trusted
+    {
+		setOption(level, option, value);
+	}
+    
+	/**
 	*	Enables TCP keep-alive with the specified parameters.
 	*/
-	void setKeepAlive(int time, int interval)
+	void setKeepAlive(int time, int interval) @trusted
 	{
 		m_socket.setKeepAlive(time, interval);
 	}
