@@ -257,7 +257,7 @@ unittest
 	void onAccept(AsyncTcpSocket server) {
 		// Ends the acceptance of a socket and returns the accepted socket
 		auto socket = server.endAccept();
-		writeln("Socket[", socket.socketId, "] has connected.");
+		writeln("Socket[", socket.socketId, "] is connected.");
 		// Begins to receive a 10 byte packet from the accepted socket
 		socket.beginReceive(10);
 
@@ -284,7 +284,7 @@ unittest
 		}
 		else {
 			// If the socket isn't listening then it's a client
-			writeln("Socket[", socket.socketId, "] has disconnected.");
+			writeln("Socket[", socket.socketId, "] is disconnected.");
 		}
 	}
 	
@@ -298,10 +298,8 @@ unittest
     server.bind(new Internet6Address("::", 9988));
     // Starts listening for connections
     server.listen(500);
-
-    // Client test ...
-    writeln("Press ENTER to connect...");
-    //readln();
+	
+    writeln("Client test");
     // Creates a new NON-asynchronous tcp socket
     auto client = new TcpSocket;
     // Connects to 127.0.0.1:9988
@@ -310,7 +308,6 @@ unittest
     for(auto i = 0; i < 10; i++)
     {
         writeln("Send a packet #", i);
-        //readln();
         // Creates a 10 byte packet
         ubyte[] buffer = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         // Sends the packet
