@@ -144,7 +144,7 @@ public:
 	/**
 	*	Binds the socket to an internet address.
 	*/
-	void bind(InternetAddress addr) {
+	void bind(Address addr) {
 		if (!m_listening)
 			throw new AsyncException("This is not a listening socket.");
 		m_socket.bind(addr);
