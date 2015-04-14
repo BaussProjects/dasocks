@@ -3,6 +3,8 @@
 */
 module dasocks.asynctcpsocket;
 
+@trusted:
+
 import std.socket;
 
 import dasocks.asyncthread;
@@ -59,11 +61,27 @@ public:
 	/**
 	*	Creates a new instance of AsyncTcpSocket.
 	*/
-	this() {
+	this(AddressFamily family = AddressFamily.INET) {
 		m_socketId = getNextUID();
-		m_socket = new TcpSocket();
+		m_socket = new TcpSocket(family);
 		m_socket.blocking = false;
 		m_listening = true;
+	}
+	
+	/**
+	*	Set a socket option.
+	*/
+    void setOption(T)(SocketOptionLevel level, SocketOption option, T value)
+    {
+		m_socket.setOption(level, option, value);
+	}
+    
+	/**
+	*	Enables TCP keep-alive with the specified parameters.
+	*/
+	void setKeepAlive(int time, int interval)
+	{
+		m_socket.setKeepAlive(time, interval);
 	}
 	
 	/**
@@ -144,7 +162,7 @@ public:
 	/**
 	*	Binds the socket to an internet address.
 	*/
-	void bind(InternetAddress addr) {
+	void bind(Address addr) {
 		if (!m_listening)
 			throw new AsyncException("This is not a listening socket.");
 		m_socket.bind(addr);
