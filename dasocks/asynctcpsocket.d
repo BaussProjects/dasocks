@@ -59,9 +59,9 @@ public:
 	/**
 	*	Creates a new instance of AsyncTcpSocket.
 	*/
-	this() {
+	this(AddressFamily family = AddressFamily.INET) {
 		m_socketId = getNextUID();
-		m_socket = new TcpSocket();
+		m_socket = new TcpSocket(family);
 		m_socket.blocking = false;
 		m_listening = true;
 	}
