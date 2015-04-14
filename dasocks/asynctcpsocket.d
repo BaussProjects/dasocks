@@ -3,6 +3,8 @@
 */
 module dasocks.asynctcpsocket;
 
+@trusted:
+
 import std.socket;
 
 import dasocks.asyncthread;
@@ -69,7 +71,7 @@ public:
 	/**
 	*	Set a socket option.
 	*/
-    void setOption(T)(SocketOptionLevel level, SocketOption option, T value) @trusted
+    void setOption(T)(SocketOptionLevel level, SocketOption option, T value)
     {
 		setOption(level, option, value);
 	}
@@ -77,7 +79,7 @@ public:
 	/**
 	*	Enables TCP keep-alive with the specified parameters.
 	*/
-	void setKeepAlive(int time, int interval) @trusted
+	void setKeepAlive(int time, int interval)
 	{
 		m_socket.setKeepAlive(time, interval);
 	}
