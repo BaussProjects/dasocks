@@ -1,0 +1,5 @@
+{
+    "name": "dasocks",
+    "description": "An asynchronous network library in D",
+    "sourcePaths" : ["."]
+}
