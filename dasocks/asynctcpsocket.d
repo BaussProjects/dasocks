@@ -313,4 +313,6 @@ unittest
         // Sends the packet
         client.send(buffer);
     }
+    
+    server.close;
 }
