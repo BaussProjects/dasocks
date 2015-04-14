@@ -3,5 +3,5 @@
     "description": "An asynchronous network library in D",
     "license": "public domain",
     "sourcePaths" : ["dasocks"],
-    "importPaths": ["dasocks"]
+    "importPaths": ["."]
 }
