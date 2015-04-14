@@ -3,4 +3,4 @@ language: d
 d: dmd-2.066.1
 
 script:
-  - dub
+  - dub test
