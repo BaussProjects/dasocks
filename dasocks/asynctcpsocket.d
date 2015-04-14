@@ -301,15 +301,15 @@ unittest
 
     // Client test ...
     writeln("Press ENTER to connect...");
-    readln();
+    //readln();
     // Creates a new NON-asynchronous tcp socket
     auto client = new TcpSocket;
     // Connects to 127.0.0.1:9988
     client.connect(new InternetAddress("127.0.0.1", 9988));
     writeln("Connected...");
-    for(auto i = 0; i < 1000; i++)
+    for(auto i = 0; i < 10; i++)
     {
-        writeln("Press ENTER to send a packet...");
+        writeln("Send a packet #", i);
         //readln();
         // Creates a 10 byte packet
         ubyte[] buffer = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
