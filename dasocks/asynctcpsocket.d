@@ -314,5 +314,6 @@ unittest
         client.send(buffer);
     }
     
+    client.close;
     server.close;
 }
