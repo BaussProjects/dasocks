@@ -134,7 +134,7 @@ private class AsyncThread {
 	/**
 	*	Handling each socket that's handled by the select.
 	*/
-	void handleSocket(SocketSet selectSet, int key) {
+	void handleSocket(SocketSet selectSet, size_t key) {
 		synchronized {
 			auto socket = m_sockets[key];
 			if (!selectSet.isSet(socket.socket))
@@ -152,7 +152,7 @@ private class AsyncThread {
 				
 				ubyte[] recvBuffer = new ubyte[state.returning];
 				
-				int recv = socket.socket.receive(recvBuffer);
+				size_t recv = socket.socket.receive(recvBuffer);
 				if (recv == 0 || recv == Socket.ERROR) {
 					// Disconnected ...
 					socket.close();

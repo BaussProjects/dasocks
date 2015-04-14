@@ -1,6 +1,6 @@
-## No longer maintained...
 dasocks
 =======
+[![Build Status](https://travis-ci.org/denizzzka/dasocks.svg?branch=master)](https://travis-ci.org/denizzzka/dasocks)
 
 An asynchronous network library in D.
 -----------
