@@ -252,12 +252,12 @@ public:
 
 unittest
 {
-	import std.stdio;
+	debug(dasocks) import std.stdio;
 	
 	void onAccept(AsyncTcpSocket server) {
 		// Ends the acceptance of a socket and returns the accepted socket
 		auto socket = server.endAccept();
-		writeln("Socket[", socket.socketId, "] is connected.");
+		debug(dasocks) writeln("Socket[", socket.socketId, "] is connected.");
 		// Begins to receive a 10 byte packet from the accepted socket
 		socket.beginReceive(10);
 
@@ -271,7 +271,7 @@ unittest
 		// Gets the received packet from the client
 		ubyte[] buffer = client.endReceive();
 
-		writeln("Received ", buffer, " from Socket[", client.socketId, "]");
+		debug(dasocks) writeln("Received ", buffer, " from Socket[", client.socketId, "]");
 
 		// Begins to receive a 10 byte packet from the client
 		client.beginReceive(10);
@@ -280,11 +280,11 @@ unittest
 	void onDisconnect(AsyncTcpSocket socket) {
 		if (socket.listening) {
 			// If the socket is listening then it's a server socket
-			writeln("The server was shutdown!");
+			debug(dasocks) writeln("The server was shutdown!");
 		}
 		else {
 			// If the socket isn't listening then it's a client
-			writeln("Socket[", socket.socketId, "] is disconnected.");
+			debug(dasocks) writeln("Socket[", socket.socketId, "] is disconnected.");
 		}
 	}
 	
@@ -299,15 +299,15 @@ unittest
     // Starts listening for connections
     server.listen(500);
 	
-    writeln("Client test");
+    debug(dasocks) writeln("Client test");
     // Creates a new NON-asynchronous tcp socket
     auto client = new TcpSocket;
     // Connects to 127.0.0.1:9988
     client.connect(new InternetAddress("127.0.0.1", 9988));
-    writeln("Connected...");
+    debug(dasocks) writeln("Connected...");
     for(auto i = 0; i < 10; i++)
     {
-        writeln("Send a packet #", i);
+        debug(dasocks) writeln("Send a packet #", i);
         // Creates a 10 byte packet
         ubyte[] buffer = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         // Sends the packet
